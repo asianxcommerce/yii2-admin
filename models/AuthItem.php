@@ -61,7 +61,7 @@ class AuthItem extends Model
         return [
             [['ruleName'], 'checkRule'],
             [['name', 'type'], 'required'],
-            [['name'], 'unique', 'when' => function () {
+            [['name'], 'checkUnique', 'when' => function () {
                 return $this->isNewRecord || ($this->_item->name != $this->name);
             }],
             [['type'], 'integer'],
@@ -73,10 +73,14 @@ class AuthItem extends Model
     /**
      * Check role is unique
      */
-    public function unique()
+    public function checkUnique()
     {
         $authManager = Configs::authManager();
         $value = $this->name;
+        if(strpos($value, ':') !== false){
+            $arr = explode(':', $value);
+            $value = $arr[1];
+        }
         if ($authManager->getRole($value) !== null || $authManager->getPermission($value) !== null) {
             $message = Yii::t('yii', '{attribute} "{value}" has already been taken.');
             $params = [
