@@ -17,7 +17,7 @@ use mdm\admin\BaseObject;
  * @author Misbahul D Munir <misbahuldmunir@gmail.com>
  * @since 1.0
  */
-class Route extends BaseObject
+class Route extends \mdm\admin\BaseObject
 {
     const CACHE_TAG = 'mdm.admin.route';
 

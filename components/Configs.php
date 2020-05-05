@@ -8,7 +8,6 @@ use yii\db\Connection;
 use yii\di\Instance;
 use yii\helpers\ArrayHelper;
 use yii\rbac\ManagerInterface;
-use mdm\admin\BaseObject;
 
 /**
  * Configs
@@ -40,7 +39,8 @@ use mdm\admin\BaseObject;
  * @author Misbahul D Munir <misbahuldmunir@gmail.com>
  * @since 1.0
  */
-class Configs extends BaseObject
+
+class Configs extends \mdm\admin\BaseObject
 {
     const CACHE_TAG = 'mdm.admin';
 
@@ -100,7 +100,23 @@ class Configs extends BaseObject
     public $options;
 
     /**
-     * @var array|false
+     * @var array|false Used for multiple application
+     * ```php
+     * [
+     *     'frontend' => [
+     *         '@common/config/main.php',
+     *         '@common/config/main-local.php',
+     *         '@frontend/config/main.php',
+     *         '@frontend/config/main-local.php',
+     *     ],
+     *     'backend' => [
+     *         '@common/config/main.php',
+     *         '@common/config/main-local.php',
+     *         '@backend/config/main.php',
+     *         '@backend/config/main-local.php',
+     *     ],
+     * ]
+     * ```     *
      */
     public $advanced;
 
