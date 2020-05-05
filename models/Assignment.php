@@ -5,7 +5,7 @@ namespace mdm\admin\models;
 use mdm\admin\components\Configs;
 use mdm\admin\components\Helper;
 use Yii;
-use \mdm\admin\BaseObject;
+use mdm\admin\BaseObject;
 
 /**
  * Description of Assignment
